@@ -1,10 +1,15 @@
-var shoe = require('shoe');
-var http = require('http'); 
-var filter = require('filter-stream');
-var through = require('through');
+var shoe     = require('shoe');
+var http     = require('http'); 
+var filter   = require('filter-stream');
+var through  = require('through');
 
-var ecstatic = require('ecstatic')(__dirname + '/public');
-var server = http.createServer(ecstatic);
+var ecstatic = require('ecstatic');
+var express  = require('express');
+var app      = express();
+app.use(ecstatic({ root: __dirname + '/public' }));
+var server   = http.createServer(app);
+
+
 var clients = [];
 
 //Crear web socket como stream 
