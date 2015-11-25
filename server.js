@@ -33,6 +33,6 @@ function broadcast(chunk, clients, sourceStream){
 
 sock.install(server, '/data');
 
-server.listen(9999, function(){
-	console.log('listening at 9999');
+server.listen(process.env.PORT || 9999, function(){
+	console.log('listening');
 });
